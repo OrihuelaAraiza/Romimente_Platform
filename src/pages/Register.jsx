@@ -5,6 +5,8 @@ import StepAccess from "../components/register/StepAccess";
 import StepIdentity from "../components/register/StepIdentity";
 import StepAddress from "../components/register/StepAddress";
 import StepContact from "../components/register/StepContact";
+import StepDocs from "../components/register/StepDocs";
+import StepFace from "../components/register/StepFace";
 import ButtonPrimary from "../components/ButtonPrimary";
 import auditService from "../services/auditService";
 import registerService from "../services/registerService";
@@ -32,6 +34,8 @@ const STEP_FLOW = [
     { id: "identity", label: "Identidad", component: StepIdentity },
     { id: "address", label: "Domicilio", component: StepAddress },
     { id: "contact", label: "Contacto", component: StepContact },
+    { id: "documents", label: "Documentacion", component: StepDocs },
+    { id: "face", label: "Verificacion facial", component: StepFace },
 ];
 
 function resolveDestination(role) {
@@ -80,6 +84,8 @@ function createInitialForm() {
         documents: {
             idOrPassportFileId: null,      // Antes idOrPassport
             professionalLicenseFileId: null, // Antes professionalLicense
+            curpDocumentFileId: null,        // Antes curpDocument
+            proofOfAddressFileId: null,      // Antes proofOfAddress
         },
         face: {
             selfieFileId: "",
@@ -234,8 +240,27 @@ function validateContact(data) {
     return errors;
 }
 
-function validateDocuments() {
-    return {};
+function validateDocuments(documents) {
+    const errors = {};
+    // Ahora 'documents.idOrPassportFileId' es directamente el String del ID
+    if (!documents.idOrPassportFileId) {
+        errors.idOrPassportFileId = "Sube tu identificacion oficial.";
+    }
+    if (!documents.professionalLicenseFileId) {
+        errors.professionalLicenseFileId = "Sube tu cedula profesional.";
+    }
+    if (!documents.proofOfAddressFileId) {
+        errors.proofOfAddressFileId = "Sube tu comprobante de domicilio.";
+    }
+    return errors;
+}
+
+function validateFace(face) {
+    const errors = {};
+    if (!face.selfieFileId) {
+        errors.selfieFileId = "Completa la verificacion facial.";
+    }
+    return errors;
 }
 
 function validateStep(stepId, form) {
@@ -243,14 +268,15 @@ function validateStep(stepId, form) {
         case "access":
             return validateAccess(form.access);
         case "identity":
-            return {
-                ...validateIdentity(form.identity),
-                ...validateDocuments(),
-            };
+            return validateIdentity(form.identity);
         case "address":
             return validateAddress(form.address);
         case "contact":
             return validateContact(form.contact);
+        case "documents":
+            return validateDocuments(form.documents);
+        case "face":
+            return validateFace(form.face);
         default:
             return {};
     }
@@ -289,6 +315,11 @@ function buildPayload(form) {
         documents: {
             idOrPassportFileId: form.documents.idOrPassportFileId,
             professionalLicenseFileId: form.documents.professionalLicenseFileId,
+            curpDocumentFileId: form.documents.curpDocumentFileId, 
+            proofOfAddressFileId: form.documents.proofOfAddressFileId,
+        },
+        face: {
+            selfieFileId: form.face.selfieFileId,
         },
     };
 }
@@ -389,7 +420,7 @@ export default function Register() {
                 );
                 setCurrentStep(nextStep);
             }
-        } catch {
+        } catch (error) {
             window.localStorage.removeItem(DRAFT_STORAGE_KEY);
         }
     }, []);
@@ -443,14 +474,14 @@ export default function Register() {
             },
         }));
         setErrors((prev) => {
-            const identityErrors = prev.identity || {};
-            if (!identityErrors[key]) {
+            const docErrors = prev.documents || {};
+            if (!docErrors[key]) {
                 return prev;
             }
             return {
                 ...prev,
-                identity: {
-                    ...identityErrors,
+                documents: {
+                    ...docErrors,
                     [key]: "",
                 },
             };
@@ -609,18 +640,23 @@ export default function Register() {
     };
 
     let stepProps = {};
-    if (activeStep.id === "identity") {
+    if (activeStep.id === "documents") {
         stepProps = {
-            data: form.identity,
-            errors: errors.identity || {},
-            onChange: handleFieldChange("identity"),
-            documents: form.documents,
-            documentErrors: errors.identity || {},
-            onDocumentChange: handleDocumentChange,
-            onDocumentBusyChange: handleBusyChange("identityDocuments"),
+        documents: form.documents,
+        errors: errors.documents || {}, // Esto pasará los errores de Zod o validación local
+        onDocumentChange: handleDocumentChange,
+        onBusyChange: handleBusyChange("documents"),
+        disabled: submitting,
+    };
+    } else if (activeStep.id === "face") {
+        stepProps = {
+            data: form.face,
+            errors: errors.face || {},
+            onChange: handleStepDataChange('face'),
+            onBusyChange: handleBusyChange("face"),
             disabled: submitting,
         };
-    } else if (activeStep.id === "contact") { // <-- ¡NUEVO BLOQUE!
+        } else if (activeStep.id === "contact") { // <-- ¡NUEVO BLOQUE!
         stepProps = {
             data: form.contact,
             errors: errors.contact || {},
@@ -628,7 +664,7 @@ export default function Register() {
             onBusyChange: handleBusyChange("contact"),
             disabled: submitting,
         };
-    } else {
+           } else {
         stepProps = {
             data: form[activeStep.id],
             errors: errors[activeStep.id] || {},
