@@ -10,7 +10,7 @@ import {
  * Cliente HTTP para hablar con klinia-api.
  *
  * Configuración:
- *   - Lee la URL base de `import.meta.env.VITE_API_URL`.
+ *   - Lee la URL base de `import.meta.env.VITE_API_BASE_URL`.
  *   - Default: `http://localhost:4000/api` (modo dev local).
  *
  * Features:
@@ -28,9 +28,12 @@ import {
  *   await api.get("/utils/consulta-cp/06700", { auth: false });
  */
 
-const BASE_URL =
-  (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
+const configuredBaseUrl =
+  (typeof import.meta !== "undefined" &&
+    (import.meta.env?.VITE_API_BASE_URL || import.meta.env?.VITE_API_URL)) ||
   "http://localhost:4000/api";
+
+export const API_BASE_URL = configuredBaseUrl.replace(/\/+$/, "");
 
 let isRefreshing = false;
 let refreshQueue = [];
@@ -55,7 +58,7 @@ async function refreshAccessToken() {
     if (!refreshToken) {
       throw makeError("Sin refresh token disponible.", 401);
     }
-    const response = await fetch(`${BASE_URL}/auth/refresh`, {
+    const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refreshToken }),
@@ -111,7 +114,7 @@ function serializeBody(body) {
 
 async function request(method, path, body, options = {}) {
   const { auth = true, headers: extraHeaders, signal } = options;
-  const url = path.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const url = path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
 
   const doFetch = async () =>
     fetch(url, {

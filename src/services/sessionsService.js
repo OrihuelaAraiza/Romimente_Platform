@@ -1,4 +1,4 @@
-import { api } from "./apiClient";
+import { api, API_BASE_URL } from "./apiClient";
 
 export async function listSessions({ q = "", from, to, status, professionalId, page = 1, size = 10 } = {}) {
   const params = new URLSearchParams();
@@ -54,7 +54,7 @@ export async function exportIcs(id) {
   // El endpoint devuelve text/calendar; el browser lo descarga
   if (typeof window === "undefined") return;
   window.open(
-    `${(import.meta.env.VITE_API_URL || "http://localhost:4000/api")}/sessions/${id}/ics`,
+    `${API_BASE_URL}/sessions/${id}/ics`,
     "_blank"
   );
 }

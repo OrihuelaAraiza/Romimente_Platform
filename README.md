@@ -66,7 +66,7 @@ Para desplegar en Vercel, configura las variables de entorno en el dashboard de 
 1. Ve a tu proyecto en Vercel → **Settings** → **Environment Variables**
 2. Agrega la variable:
    - **Variable**: `VITE_API_BASE_URL`
-   - **Value**: `https://brevemente-api-gmdbb0ezfbhybjcw.canadacentral-01.azurewebsites.net/api`
+   - **Value**: `https://klinia-api.nicebay-2196f468.eastus2.azurecontainerapps.io/api`
    - **Environments**: Production, Preview, Development
 
 **Nota**: El backend ya está desplegado en Azure. El frontend en Vercel se conectará a este backend usando la variable de entorno.
@@ -205,8 +205,8 @@ Esta es la configuración recomendada para un deployment profesional:
 Esta es la configuración actual del proyecto:
 
 - **Frontend**: Vercel (React SPA)
-- **Backend**: Azure App Service (ya desplegado)
-- **URL del Backend**: `https://brevemente-api-gmdbb0ezfbhybjcw.canadacentral-01.azurewebsites.net/api`
+- **Backend**: Azure Container Apps (ya desplegado)
+- **URL del Backend**: `https://klinia-api.nicebay-2196f468.eastus2.azurecontainerapps.io/api`
 
 **Pasos para desplegar:**
 
@@ -217,7 +217,7 @@ Esta es la configuración actual del proyecto:
 
 2. **Configurar variables de entorno en Vercel**:
    - Ve a **Settings** → **Environment Variables**
-   - Agrega: `VITE_API_BASE_URL` = `https://brevemente-api-gmdbb0ezfbhybjcw.canadacentral-01.azurewebsites.net/api`
+   - Agrega: `VITE_API_BASE_URL` = `https://klinia-api.nicebay-2196f468.eastus2.azurecontainerapps.io/api`
    - Selecciona todos los entornos (Production, Preview, Development)
 
 3. **Configurar CORS en Azure**:
