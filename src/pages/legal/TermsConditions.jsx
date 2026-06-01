@@ -19,7 +19,7 @@ export default function TermsConditions() {
           <section>
             <h2>1. Aceptación de los términos</h2>
             <p>
-              Al crear una cuenta en <strong>ROMI TBE</strong> (operada por Red de Optimización
+              Al crear una cuenta en <strong>ROMI Clínica</strong> (operada por Red de Optimización
               Médica Inteligente, S.A. de C.V., "Romi AI") usted acepta los presentes Términos y
               Condiciones, así como el Aviso de Privacidad. Si no está de acuerdo con alguno de
               estos términos, abstenerse de utilizar la plataforma.
@@ -29,10 +29,10 @@ export default function TermsConditions() {
           <section>
             <h2>2. Naturaleza del servicio</h2>
             <p>
-              ROMI TBE es una plataforma tecnológica que facilita la <strong>gestión clínica
+              ROMI Clínica es una plataforma tecnológica que facilita la <strong>gestión clínica
               y administrativa</strong> entre profesionales de la salud mental y sus pacientes.
               Incluye expediente clínico electrónico, agenda, generación de reportes y un copiloto
-              de IA (Brifi).
+              de IA (Romi Transcript).
             </p>
             <p>
               <strong>Romi AI no presta servicios médicos ni terapéuticos directamente</strong>.
@@ -77,7 +77,7 @@ export default function TermsConditions() {
             <h2>5. Responsabilidad sobre la información clínica</h2>
             <p>
               El profesional es el único responsable de la veracidad, integridad y oportunidad de
-              la información clínica que registra. ROMI TBE provee la infraestructura tecnológica
+              la información clínica que registra. ROMI Clínica provee la infraestructura tecnológica
               (folios, sellos SHA-256, trazabilidad) para cumplir con NOM-004 y NOM-024, pero no
               valida el contenido clínico de notas, prescripciones o reportes.
             </p>
@@ -88,14 +88,14 @@ export default function TermsConditions() {
           </section>
 
           <section>
-            <h2>6. Brifi y limitaciones de la IA</h2>
+            <h2>6. Romi Transcript y limitaciones de la IA</h2>
             <p>
-              Brifi es un asistente de soporte. Sus sugerencias <strong>no constituyen
+              Romi Transcript es un asistente de soporte. Sus sugerencias <strong>no constituyen
               recomendación médica vinculante</strong> y deben ser siempre validadas por el
               profesional antes de aplicarse en el expediente o comunicarse al paciente.
             </p>
             <p>
-              Romi AI no garantiza que las sugerencias generadas por Brifi sean libres de error.
+              Romi AI no garantiza que las sugerencias generadas por Romi Transcript sean libres de error.
               Tampoco se responsabiliza por decisiones clínicas tomadas con base exclusiva en
               dichas sugerencias sin la debida revisión profesional.
             </p>

@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
               "Romi AI" o "el Responsable"), con domicilio en Hospital Ángeles Puebla, Av. Kepler
               No. 2143, Torre de Especialidades IV, Consultorio 3800, CP 72820, Reserva Territorial
               Atlixcáyotl, Puebla, Pue., es la entidad responsable del tratamiento de sus datos
-              personales recabados a través de la plataforma <strong>ROMI TBE</strong>.
+              personales recabados a través de la plataforma <strong>ROMI Clínica</strong>.
             </p>
           </section>
 
@@ -62,15 +62,15 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2>4. Brifi (asistente de inteligencia artificial)</h2>
+            <h2>4. Romi Transcript (asistente de inteligencia artificial)</h2>
             <p>
-              ROMI TBE incluye un copiloto clínico de IA llamado <strong>Brifi</strong>. Es
+              ROMI Clínica incluye un copiloto clínico de IA llamado <strong>Romi Transcript</strong>. Es
               importante que conozca cómo opera respecto a sus datos personales:
             </p>
             <ul>
-              <li>Brifi <strong>NO entrena modelos abiertos</strong> con sus datos clínicos ni de identificación.</li>
-              <li>Brifi opera sobre un <strong>corpus cerrado</strong> de literatura clínica oficial (CIE-11, DSM-5-TR y protocolos institucionales).</li>
-              <li>Toda sugerencia generada por Brifi debe ser <strong>validada y aprobada por el profesional</strong> antes de almacenarse en el expediente. La IA nunca cierra un expediente ni firma documentos por sí misma.</li>
+              <li>Romi Transcript <strong>NO entrena modelos abiertos</strong> con sus datos clínicos ni de identificación.</li>
+              <li>Romi Transcript opera sobre un <strong>corpus cerrado</strong> de literatura clínica oficial (CIE-11, DSM-5-TR y protocolos institucionales).</li>
+              <li>Toda sugerencia generada por Romi Transcript debe ser <strong>validada y aprobada por el profesional</strong> antes de almacenarse en el expediente. La IA nunca cierra un expediente ni firma documentos por sí misma.</li>
               <li>El audio de las sesiones, si decide grabarlo, se procesa para transcripción y propuesta de autollenado. Puede solicitar su eliminación en cualquier momento.</li>
             </ul>
           </section>

@@ -57,7 +57,8 @@ export async function sign(reportId) {
       pdfHash = "";
     }
   }
-  return api.post(`/reports/${reportId}/sign`, { pdfHash });
+  // Backend nombra al cierre "lock" (firma == cerrar el reporte para edición)
+  return api.post(`/reports/${reportId}/lock`, { pdfHash });
 }
 
 export const lock = sign;
@@ -103,14 +104,16 @@ export async function exportPatientRecordJson(patientId) {
 }
 
 export async function exportHistoryPdf(patientId, overrides = {}) {
-  const generateHistoryPdf = (await import("../utils/export/pdf/historyPdf")).default;
+  // Usa downloadHistoryPdf que pasa por generateAndRegister: descarga + auto-registra
+  // en GeneratedDocument para que aparezca en docs del paciente.
+  const { downloadHistoryPdf } = await import("../utils/export/pdf/historyPdf");
   const bundle = await fetchPatientBundle(patientId);
-  return generateHistoryPdf({ ...bundle, ...overrides });
+  return downloadHistoryPdf({ ...bundle, ...overrides });
 }
 
 export async function exportNotePdf(patientId, note, overrides = {}) {
-  const generateNotePdf = (await import("../utils/export/pdf/notePdf")).default;
-  return generateNotePdf({ note, patientId, ...overrides });
+  const { downloadNotePdf } = await import("../utils/export/pdf/notePdf");
+  return downloadNotePdf({ note, patientId, ...overrides });
 }
 
 export default {

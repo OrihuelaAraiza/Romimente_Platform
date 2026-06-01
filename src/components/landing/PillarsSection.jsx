@@ -4,13 +4,13 @@ import { Brain, Sparkles, ShieldCheck, Workflow } from "lucide-react";
 const PILLARS = [
   {
     icon: Brain,
-    title: "Diseñado para Terapia Breve Estratégica",
+    title: "Historia clínica completa por especialidad",
     description:
-      "Módulos nativos para DX.OP, Valoración del Cambio (VC/VG), Reestructuraciones (RST) y Prescripciones (PX). Mide la evolución del paciente con bases empíricas, no impresiones.",
+      "Tres modelos de historia (psicológica, psiquiátrica y psicoterapéutica) con el formato propio de cada disciplina. El expediente del paciente reúne todas las miradas.",
   },
   {
     icon: Sparkles,
-    title: "Copiloto clínico Brifi",
+    title: "Copiloto clínico Romi Transcript",
     description:
       "Transcribe sesiones, propone autollenado del expediente y sugiere intervenciones con base en un corpus cerrado (CIE-11, DSM-5-TR). Tú validas cada paso: ninguna decisión clínica es automática.",
   },
@@ -24,7 +24,7 @@ const PILLARS = [
     icon: Workflow,
     title: "Operación híbrida: Modo IA o Manual",
     description:
-      "Graba la sesión y deja que Brifi proponga el borrador, o trabaja con clics y menús desplegables. La plataforma se adapta a tu ritmo y estilo clínico.",
+      "Graba la sesión y deja que Romi Transcript proponga el borrador, o trabaja con clics y menús desplegables. La plataforma se adapta a tu ritmo y estilo clínico.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function PillarsSection() {
   return (
     <section className="landing-section pillars-section" id="que-es-brevemente">
       <header className="landing-section__header">
-        <span className="landing-eyebrow">¿Qué es ROMI TBE?</span>
+        <span className="landing-eyebrow">¿Qué es ROMI Clínica?</span>
         <h2>Un ecosistema clínico, no solo un sistema administrativo</h2>
         <p className="helper-text">
           Construido específicamente para la práctica clínica de salud mental, integra

@@ -8,8 +8,7 @@ import { currentRole } from "../services/authService";
 import { ROUTES } from "../utils/constants";
 import HeroDoodle from "../components/landing/HeroDoodle";
 import PillarsSection from "../components/landing/PillarsSection";
-import BrifiSpotlight from "../components/landing/BrifiSpotlight";
-import TbeMethodology from "../components/landing/TbeMethodology";
+import RomiTranscript from "../components/landing/RomiTranscript";
 import TherapistDirectory from "../components/landing/TherapistDirectory";
 import HowItWorks from "../components/landing/HowItWorks";
 import SpecialtiesSection from "../components/landing/SpecialtiesSection";
@@ -62,7 +61,7 @@ export default function Home() {
     }
   }, [navigate]);
 
-  // Si llegamos con un hash (ej. /#brifi desde otra página), hacemos scroll
+  // Si llegamos con un hash (ej. /#romi-transcript desde otra página), hacemos scroll
   // a esa sección una vez montado el contenido.
   useEffect(() => {
     if (!location.hash) return;
@@ -98,13 +97,13 @@ export default function Home() {
             animate="visible"
           >
             <Motion.span className="home-eyebrow" variants={heroItem}>
-              ROMI TBE · Ecosistema clínico de salud mental
+              ROMI Clínica · Ecosistema clínico de salud mental
             </Motion.span>
             <Motion.h1 className="home-title" variants={heroItem}>
               Práctica clínica con <span className="home-title__accent">rigor, IA y respaldo NOM-004</span>.
             </Motion.h1>
             <Motion.p className="home-description" variants={heroItem}>
-              Construido sobre Terapia Breve Estratégica (TBE), con Brifi —tu copiloto de IA bajo
+              Plataforma clínica de salud mental con Romi Transcript —tu copiloto de IA bajo
               corpus cerrado— y arquitectura que cumple NOM-004 y NOM-024 desde el primer día.
               Para pacientes y profesionales que quieren seriedad sin perder agilidad.
             </Motion.p>
@@ -155,13 +154,12 @@ export default function Home() {
 
       <RevealSection><PillarsSection /></RevealSection>
 
-      <RevealSection><BrifiSpotlight /></RevealSection>
+      <RevealSection><RomiTranscript /></RevealSection>
 
       <RevealSection><HowItWorks /></RevealSection>
 
       <RevealSection><TherapistDirectory onSelectTherapist={handleSelectTherapist} /></RevealSection>
 
-      <RevealSection><TbeMethodology /></RevealSection>
 
       <RevealSection><SpecialtiesSection /></RevealSection>
 
@@ -176,7 +174,7 @@ export default function Home() {
       >
         <div className="stack-2" style={{ alignItems: "center", textAlign: "center" }}>
           <h2>¿Eres profesional de la salud mental?</h2>
-          <p className="helper-text">Únete a la plataforma y administra tu práctica clínica con respaldo NOM-004 y Brifi a tu lado.</p>
+          <p className="helper-text">Únete a la plataforma y administra tu práctica clínica con respaldo NOM-004 y Romi Transcript a tu lado.</p>
           <ButtonPrimary as={Link} to={ROUTES.register}>
             Registrarme como profesional
             <ArrowRight size={16} aria-hidden="true" style={{ marginLeft: 6 }} />

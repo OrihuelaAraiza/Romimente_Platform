@@ -8,6 +8,7 @@ import StepContact from "../components/register/StepContact";
 import StepDocs from "../components/register/StepDocs";
 import StepFace from "../components/register/StepFace";
 import ButtonPrimary from "../components/ButtonPrimary";
+import DoodleScatter from "../components/DoodleScatter";
 import auditService from "../services/auditService";
 import registerService from "../services/registerService";
 import storage from "../services/storage";
@@ -675,20 +676,21 @@ export default function Register() {
 
     return (
         <div className="register-page">
+            <DoodleScatter />
             <section className="register-main">
                 <header className="register-header">
                     <Logo
                         variant="horizontal"
                         size="lg"
                         theme="auto"
-                        alt="ROMI TBE"
+                        alt="ROMI Clínica"
                         className="register-logo"
                     />
                     <div className="register-heading">
                         <h1>Registro profesional</h1>
                         <p>
                             Completa los pasos para habilitar tu acceso como profesional de
-                            la salud en ROMI TBE.
+                            la salud en ROMI Clínica.
                         </p>
                     </div>
                 </header>

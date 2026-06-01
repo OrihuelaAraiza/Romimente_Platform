@@ -23,6 +23,7 @@ import { useToast } from "../components/UI/Toast";
 import doctorImg from "../assets/hero/doctor-login.jpg";
 import Logo from "../components/Brand/Logo";
 import SelectionFlag from "../components/landing/SelectionFlag";
+import DoodleScatter from "../components/DoodleScatter";
 const INITIAL_FORM = {
   email: "",
   password: "",
@@ -210,6 +211,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
+      <DoodleScatter />
       <SelectionFlag ctaLabel="Crear cuenta paciente" ctaTo="/register/patient" />
       <div className="login-layout">
         <section className="login-card">
@@ -218,7 +220,7 @@ export default function Login() {
               variant="horizontal"
               size="lg"
               theme="auto"
-              alt="ROMI TBE"
+              alt="ROMI Clínica"
               className="login-logo"
             />
             <ThemeToggle className="login-theme-toggle" />
@@ -340,7 +342,7 @@ export default function Login() {
             >
               <p style={{ margin: 0 }}>
                 {userType === "professional"
-                  ? "¿Eres nuevo en ROMI TBE?"
+                  ? "¿Eres nuevo en ROMI Clínica?"
                   : "¿Primera vez aquí?"}
               </p>
 
@@ -368,7 +370,7 @@ export default function Login() {
         >
           <img
             src={doctorImg}
-            alt="Profesional de salud usando la plataforma ROMI TBE"
+            alt="Profesional de salud usando la plataforma ROMI Clínica"
             className="login-hero__image"
           />
         </Motion.aside>
