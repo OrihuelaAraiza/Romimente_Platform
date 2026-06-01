@@ -11,7 +11,7 @@ import {
  *
  * Configuración:
  *   - Lee la URL base de `import.meta.env.VITE_API_BASE_URL`.
- *   - Default: `http://localhost:4000/api` (modo dev local).
+ *   - Default: backend de Azure Container Apps.
  *
  * Features:
  *   - Inyecta `Authorization: Bearer <token>` desde localStorage.
@@ -31,7 +31,7 @@ import {
 const configuredBaseUrl =
   (typeof import.meta !== "undefined" &&
     (import.meta.env?.VITE_API_BASE_URL || import.meta.env?.VITE_API_URL)) ||
-  "http://localhost:4000/api";
+  "https://klinia-api.nicebay-2196f468.eastus2.azurecontainerapps.io/api";
 
 export const API_BASE_URL = configuredBaseUrl.replace(/\/+$/, "");
 

@@ -27,7 +27,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:4000",
+        target: "https://klinia-api.nicebay-2196f468.eastus2.azurecontainerapps.io",
         changeOrigin: true,
         secure: false,
         ws: true,
